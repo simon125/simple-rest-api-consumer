@@ -9,7 +9,7 @@ export const App: FC = () => {
   const getTasks = async () => {
     setIsLoading(true);
     try {
-      const resp = await fetch("http://localhost:3005/api/todos");
+      const resp = await fetch("/api/todos");
       if (!resp.ok) {
         throw new Error("Failed to fetch tasks");
       }
@@ -26,7 +26,7 @@ export const App: FC = () => {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const resp = await fetch("http://localhost:3005/api/todos", {
+      const resp = await fetch("/api/todos", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -53,7 +53,7 @@ export const App: FC = () => {
 
   const removeTask = async (id: string) => {
     try {
-      const resp = await fetch(`http://localhost:3005/api/todos/${id}`, {
+      const resp = await fetch(`/api/todos/${id}`, {
         method: "DELETE",
       });
 
